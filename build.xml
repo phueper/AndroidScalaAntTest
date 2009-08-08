@@ -57,5 +57,9 @@
          This will ensure that the properties are setup correctly but that your customized
          targets are used.
     -->
-    <setup />
+    <setup import="false"/>
+
+	<!-- import my android_rules.xml file -->
+	<import file="android_rules.xml" />
+
 </project>
