@@ -3,7 +3,7 @@ package net.hueper.android.test;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class AndroidAntScalaTest extends Activity
+public class AndroidAntScalaTestJava extends Activity
 {
     /** Called when the activity is first created. */
     @Override
