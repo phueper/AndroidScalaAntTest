@@ -7,8 +7,8 @@ import _root_.android.view.View
 import _root_.android.hardware.{Sensor, SensorManager}
 
 class AndroidAntScalaTest extends Activity {
-    // converter from View to any view Type (e.g. for findViewById)
-	implicit def view2TextView(v:View):TextView = {v.asInstanceOf[TextView] }
+// converter from View to any view Type (e.g. for findViewById)
+implicit def view2TextView(v:View):TextView = {v.asInstanceOf[TextView] }
     implicit def view2ScrollView(v:View):ScrollView = {v.asInstanceOf[ScrollView] }
     // converter for anonymous func to Runnable (e.g. for post())
     implicit def func2Runnable(func: ()=>Unit):Runnable = {
