@@ -88,6 +88,13 @@
 
 	<!-- rules -->
 
+	<target name="clean">
+		<delete quiet="true" verbose="false">
+			<fileset dir="${out-classes}" />
+			<fileset dir="${gen-folder}" />
+		</delete>
+	</target>
+
 	<!-- Create the output directories if they don't exist yet. -->
 	<target name="dirs">
 		<echo>Creating output directories if needed...</echo>
