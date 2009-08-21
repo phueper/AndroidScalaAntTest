@@ -78,7 +78,15 @@ class AndroidAntScalaTest extends Activity {
 		scrollViewUpdate(scrollView)
 		true
 	}
-
+ 
+	/* since views should only be accessed by the UI Thread, i use this method from ButtonActor to post the message to the TextView */
+	def textViewAppend(textView:TextView, msg:String) {
+		textView.post(()=>{
+			textView.append(msg)
+			() // must return Unit
+		})
+	}
+ 
 	def scrollViewUpdate(scrollView:ScrollView) {
 		/* post function for scrollView, after updates, we want to scroll to bottom... */
 		scrollView.post(()=>{
@@ -94,7 +102,9 @@ class AndroidAntScalaTest extends Activity {
 		def act() {
 			loop {
 				receive {
-					case msg => textView.append("msg received: " + msg.toString() + " from thread: " + Thread.currentThread().getId() + "\n");scrollViewUpdate(scrollView); 
+					case msg =>
+					  val textMsg = "msg received: " + msg.toString() + " from thread: " + Thread.currentThread().getId() + "\n";
+					  textViewAppend(textView, textMsg);scrollViewUpdate(scrollView); 
 				}
 			}
 		}
