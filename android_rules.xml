@@ -159,6 +159,7 @@
 				<fileset dir="${external-libs-folder}" includes="*.jar" />
 				<pathelement path="${main-out-classes}" />
 				<pathelement path="${scala-android.jar}" />
+				<pathelement path="${scala-library.jar}" />
 			</classpath>
 		</scalac>
 	</target>
@@ -183,7 +184,7 @@
 	<target name="proguard" depends="compile">
 		<proguard warn="false" optimize="false" obfuscate="false">
 			<!-- 
-			-injars ${out-classes-location}:${external-libs-folder}/*.jar:${scala-android.jar}(!META-INF/MANIFEST.MF,!library.properties)
+			-injars ${out-classes-location}:${external-libs-folder}/*.jar:${scala-android.jar}(!META-INF/MANIFEST.MF,!library.properties):${scala-library.jar}(!META-INF/MANIFEST.MF,!library.properties)
 			-outjars ${proguard.out.jar}
 			-->
 			<injar>
