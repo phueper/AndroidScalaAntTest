@@ -74,7 +74,7 @@ class AndroidAntScalaTest extends Activity {
 			},
 			(p:AdapterView[_])=>{textView.append("nothing selected\n");scrollViewUpdate(scrollView)})
 
-		button.setOnClickListener((v:View)=>{textView.append("click\n");buttonActor!"msg";scrollViewUpdate(scrollView)})
+		button.setOnClickListener((v:View)=>{textView.append("click from thread: " + Thread.currentThread().getId() + "\n");buttonActor!"msg";scrollViewUpdate(scrollView)})
 		scrollViewUpdate(scrollView)
 		true
 	}
@@ -94,7 +94,7 @@ class AndroidAntScalaTest extends Activity {
 		def act() {
 			loop {
 				receive {
-					case msg => textView.append("msg received: " + msg.toString() + "\n");scrollViewUpdate(scrollView); 
+					case msg => textView.append("msg received: " + msg.toString() + " from thread: " + Thread.currentThread().getId() + "\n");scrollViewUpdate(scrollView); 
 				}
 			}
 		}
